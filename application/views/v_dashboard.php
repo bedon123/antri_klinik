@@ -135,6 +135,7 @@ function ajaxGetAntrian(){
             swal({
                     type: 'error',
                     title: 'Oops...',
+                    timer: 2000,
                     html: 'Error occured. Please try again or contact administrator'
                 })	
             
