@@ -23,29 +23,25 @@
 </div>
 <div class="container-fluid" style="margin-top:10px;">
     <div class="row text-center">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card bg-success">
-                <div style="font-size:50px;margin-top:20px;">Antrian</div>
-                <div style="font-size:140px;padding-top:30px;padding-bottom:40px;"><span id="current_no_antrian">-</span></div>
-                <div style="font-size:40px;border-top:1px solid white;padding-bottom:10px;">Menuju <span id="current_loket">-</span></div>
+                <div style="font-size:40px;margin-top:20px;">Antrian</div>
+                <div style="font-size:80px;"><span id="current_no_antrian">-</span></div>
+                <div style="font-size:30px;border-top:1px solid white;padding-bottom:10px;">Menuju <span id="current_loket">-</span></div>
             </div>
-            
-        </div>
-        <div class="col-md-6">
-            
-            <div class="" id="div_loket">
+            <div class="row" id="div_loket">
                 <?php foreach($loket as $r_loket){?>
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card bg-primary">
-                        <div style="font-size:30px;">Antrian</div>
-                        <div style="font-size:70px;height:120px"><?php echo ($r_loket['current_antrian'])?$r_loket['current_antrian']:'-';?></div>
-                        <div style="font-size:30px;border-top:1px solid white;padding-bottom:5px;"> <?php echo $r_loket['nama'].' '.$r_loket['nomor'];?></div>
+                        <div style="font-size:20px;">Antrian</div>
+                        <div style="font-size:40px;height:70px"><?php echo ($r_loket['current_antrian'])?$r_loket['current_antrian']:'-';?></div>
+                        <div style="font-size:20px;border-top:1px solid white;padding-bottom:5px;"> <?php echo $r_loket['nama'].' '.$r_loket['nomor'];?></div>
                     </div>
                 </div>
                 <?php } ?>
             </div>
         </div>
-        <!-- <div class="col-md-8">
+        <div class="col-md-8">
             <div class="row" id="div_ruangan">
             <?php foreach($ruangan as $r_ruangan){?>
                 <div class="col-md-4">
@@ -58,7 +54,7 @@
                 <?php } ?>
             </div>
             
-        </div> -->
+        </div>
     </div>
     
 
@@ -106,31 +102,31 @@ function ajaxGetAntrian(){
             for (let i = 0; i < json.loket.length; i++) {
                 const el = json.loket[i];
                 html1+=`
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card bg-primary">
-                        <div style="font-size:30px;">Antrian</div>
-                        <div style="font-size:70px;height:120px">${(el.current_antrian)?el.current_antrian:'-'}</div>
-                        <div style="font-size:30px;border-top:1px solid white;padding-bottom:5px;">${el.nama} ${el.nomor}</div>
+                        <div style="font-size:20px;">Antrian</div>
+                        <div style="font-size:40px;height:70px">${(el.current_antrian)?el.current_antrian:'-'}</div>
+                        <div style="font-size:20px;border-top:1px solid white;padding-bottom:5px;">${el.nama} ${el.nomor}</div>
                     </div>
                 </div>
                 `;
             }
 
-            // var html2='';
-            // for (let j = 0; j < json.ruangan.length; j++) {
-            //     const el2 = json.ruangan[j];
-            //     html2+=`
-            //     <div class="col-md-4">
-            //         <div class="card bg-warning">
-            //             <div style="font-size:20px;">Antrian</div>
-            //             <div style="font-size:40px;height:70px">${(el2.current_antrian)?el2.current_antrian:'-'}</div>
-            //             <div style="font-size:20px;border-top:1px solid black;padding-bottom:5px;">${el2.nama} ${el2.nomor}</div>
-            //         </div>
-            //     </div>`;
-            // }
+            var html2='';
+            for (let j = 0; j < json.ruangan.length; j++) {
+                const el2 = json.ruangan[j];
+                html2+=`
+                <div class="col-md-4">
+                    <div class="card bg-warning">
+                        <div style="font-size:20px;">Antrian</div>
+                        <div style="font-size:40px;height:70px">${(el2.current_antrian)?el2.current_antrian:'-'}</div>
+                        <div style="font-size:20px;border-top:1px solid black;padding-bottom:5px;">${el2.nama} ${el2.nomor}</div>
+                    </div>
+                </div>`;
+            }
 
             $('#div_loket').html(html1);
-            // $('#div_ruangan').html(html2);
+            $('#div_ruangan').html(html2);
             $('#current_no_antrian').text(json.current_no_antrian);
             $('#current_loket').text(json.current_loket);
             

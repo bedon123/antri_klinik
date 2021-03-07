@@ -74,7 +74,7 @@
 <script src="<?php echo base_url();?>assets/sweet-alert/sweetalert2.min.js"></script>
 
 <!-- Toastr -->
-<script src="../../plugins/toastr/toastr.min.js"></script>
+<script src="<?php echo base_url();?>assets/theme_admin/plugins/toastr/toastr.min.js"></script>
 
 </body>
 </html>

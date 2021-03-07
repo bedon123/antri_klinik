@@ -28,7 +28,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="card card-default">
             <div class="card-header">
                 <b>Panggil ke Loket</b>
@@ -42,7 +42,20 @@
             <!-- /.card-body -->
         </div>
     </div>
-    
+    <div class="col-md-6">
+        <div class="card card-default">
+            <div class="card-header">
+                <b>Panggil ke Ruang Tes</b>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-bordered table-condensed" id="table_tes">
+                   
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
 </div>
 
 <div id="snackbar"></div>
@@ -125,7 +138,7 @@ $(function () {
 
 function _init(){
     ajaxGetAntrianLoket();
-    // ajaxGetAntrianTes();
+    ajaxGetAntrianTes();
     ajaxGetJumlahAntrian();
 }
 

@@ -2,7 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pengunjung extends CI_Controller {
-
+    
+    public function __construct()
+    {
+        parent::__construct();
+        $user_id=$this->session->userdata('user_id');
+        if($user_id==""){
+            redirect('login_pengunjung');
+        }
+    }
+    
     public function index()
     {
         // $data['content']='v_pengunjung';
